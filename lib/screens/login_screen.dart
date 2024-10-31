@@ -33,17 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<AuthResponse> _googleSignIn() async {
-    /// TODO: update the Web client ID with your own.
-    ///
-    /// Web Client ID that you registered with Google Cloud.
     final webClientId = Config.googleWebClientId;
-
-    /// TODO: update the iOS client ID with your own.
-    ///
-    /// iOS Client ID that you registered with Google Cloud.
     final iosClientId = Config.googleIosClientId;
-    // Google sign in on Android will work without providing the Android
-    // Client ID registered on Google Cloud.
 
     final GoogleSignIn googleSignIn = GoogleSignIn(
       clientId: iosClientId,
@@ -71,14 +62,88 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: _googleSignIn,
-          child: const Text('Google login'),
-        ),
+      body: Stack(
+        children: [
+          // Background Image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/login/background.png', // Path to the background image
+              fit: BoxFit.cover,
+            ),
+          ),
+          // Content on top of the background
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/login/bunny.png', // Bunny image
+                    width: 270,
+                    height: 270,
+                  ),
+                  const SizedBox(height: 30), // Adjusted height
+                  // Text for Title and Description
+                  const Text(
+                    '내 손 안에 작은 친구',
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: 'Pretendard', // Set custom font family
+                    ),
+                  ),
+                  const SizedBox(height: 5), // Reduced height
+                  // Replace 'MINI BUDDY' with Image
+                  Image.asset(
+                    'assets/login/minibuddy_logo.png', // Path to minibuddy logo image
+                    width: 300, // Adjust width to fit design
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    '혼자 사는 당신을 위해 "미니버디"랑 이야기 나눠봐요!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Pretendard', // Set custom font family
+                    ),
+                  ),
+                  const SizedBox(height: 60),
+                  // Google Sign-In Button
+                  GestureDetector(
+                    onTap: _googleSignIn,
+                    child: SizedBox(
+                      width: 250, // Set width for consistency
+                      height: 55, // Set height for button-like appearance
+                      child: Image.asset(
+                        'assets/login/google_signin_button.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // Kakao Sign-In Button
+                  GestureDetector(
+                    onTap: () {
+                      // Kakao login logic here
+                    },
+                    child: SizedBox(
+                      width: 250, // Set width for consistency
+                      height: 55, // Set height to match Google button
+                      child: Image.asset(
+                        'assets/login/kakao_signin_button.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
