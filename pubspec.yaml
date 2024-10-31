@@ -71,6 +71,10 @@ flutter:
     - assets/home/bunny1.png
     - assets/home/logo_b.png
 
+    - assets/profile/red.png
+    - assets/profile/blue.png
+    - assets/profile/yellow.png
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

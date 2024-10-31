@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 5), // Reduced height
                   // Replace 'MINI BUDDY' with Image
                   Image.asset(
-                    'assets/login/logo_w.png', // Path to minibuddy logo image
+                    'assets/login/logo_ws.png', // Path to minibuddy logo image
                     width: 300, // Adjust width to fit design
                   ),
                   const SizedBox(height: 10),
