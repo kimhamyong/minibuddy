@@ -70,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(height: 50),
           // 경고 메시지 및 불빛 아이콘 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center, // 가운데 정렬
               children: [
@@ -97,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      '최근 기억력이 흐려진 느낌이 들면 간단한 메모 습관을 시작해보세요.',
+                      '최근 마음이 조금 무거운 것 같아요. 잠깐 휴식하고 심호흡해보는 건 어때요?',
                       style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -112,7 +112,7 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(height: 70),
           // 경고 메시지 및 불빛 아이콘 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center, // 가운데 정렬
               children: [

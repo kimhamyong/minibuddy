@@ -1,10 +1,9 @@
+// lib/screens/login_screen.dart
+
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:minibuddy/main.dart';
-import 'package:minibuddy/screens/profile_screen.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:minibuddy/config.dart';
 import 'package:minibuddy/screens/home_screen.dart';
+import 'package:minibuddy/service/login/google_signup.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +13,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final LoginService loginService = LoginService(Supabase.instance.client);
+
   @override
   void initState() {
     _setupAuthListener();
@@ -21,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _setupAuthListener() {
-    supabase.auth.onAuthStateChange.listen((data) {
+    Supabase.instance.client.auth.onAuthStateChange.listen((data) {
       final event = data.event;
       if (event == AuthChangeEvent.signedIn) {
         Navigator.of(context).pushReplacement(
@@ -33,31 +34,13 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  Future<AuthResponse> _googleSignIn() async {
-    final webClientId = Config.googleWebClientId;
-    final iosClientId = Config.googleIosClientId;
-
-    final GoogleSignIn googleSignIn = GoogleSignIn(
-      clientId: iosClientId,
-      serverClientId: webClientId,
-    );
-    final googleUser = await googleSignIn.signIn();
-    final googleAuth = await googleUser!.authentication;
-    final accessToken = googleAuth.accessToken;
-    final idToken = googleAuth.idToken;
-
-    if (accessToken == null) {
-      throw 'No Access Token found.';
+  Future<void> _handleGoogleSignIn() async {
+    try {
+      await loginService.googleSignIn();
+    } catch (e) {
+      // Handle errors here
+      print("Error signing in with Google: $e");
     }
-    if (idToken == null) {
-      throw 'No ID Token found.';
-    }
-
-    return supabase.auth.signInWithIdToken(
-      provider: OAuthProvider.google,
-      idToken: idToken,
-      accessToken: accessToken,
-    );
   }
 
   @override
@@ -98,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 5), // Reduced height
                   // Replace 'MINI BUDDY' with Image
                   Image.asset(
-                    'assets/login/logo_ws.png', // Path to minibuddy logo image
+                    'assets/login/logo_w.png', // Path to minibuddy logo image
                     width: 300, // Adjust width to fit design
                   ),
                   const SizedBox(height: 10),
@@ -115,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 60),
                   // Google Sign-In Button
                   GestureDetector(
-                    onTap: _googleSignIn,
+                    onTap: _handleGoogleSignIn,
                     child: SizedBox(
                       width: 250, // Set width for consistency
                       height: 55, // Set height for button-like appearance
