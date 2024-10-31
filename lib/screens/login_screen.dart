@@ -4,6 +4,7 @@ import 'package:minibuddy/main.dart';
 import 'package:minibuddy/screens/profile_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:minibuddy/config.dart';
+import 'package:minibuddy/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (event == AuthChangeEvent.signedIn) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => const ProfileScreen(),
+            builder: (context) => const HomeScreen(),
           ),
         );
       }
@@ -97,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 5), // Reduced height
                   // Replace 'MINI BUDDY' with Image
                   Image.asset(
-                    'assets/login/minibuddy_logo.png', // Path to minibuddy logo image
+                    'assets/login/logo_w.png', // Path to minibuddy logo image
                     width: 300, // Adjust width to fit design
                   ),
                   const SizedBox(height: 10),
