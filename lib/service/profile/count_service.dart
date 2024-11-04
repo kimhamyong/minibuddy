@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class CountService {
-  final String url = 'https://c5261cb1-73f2-4521-8ff8-d8e74bfdd309.mock.pstmn.io/profile/profile';
+  final String url = 'https://c5261cb1-73f2-4521-8ff8-d8e74bfdd309.mock.pstmn.io/profile';
 
   Future<Map<String, int>> getCounts() async {
     try {
