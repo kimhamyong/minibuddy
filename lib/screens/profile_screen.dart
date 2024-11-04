@@ -14,11 +14,11 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFFFD99C), // 상단바 노란색 배경
+        backgroundColor: const Color(0xFFFFD99C),
         title: const Text(
           '내 정보',
           style: TextStyle(
-            fontFamily: 'Pretendard', // "내 정보" 글씨체 설정
+            fontFamily: 'Pretendard',
             fontWeight: FontWeight.bold,
             fontSize: 24,
           ),
@@ -28,13 +28,12 @@ class ProfileScreen extends StatelessWidget {
         children: [
           // 상단 프로필 영역
           Container(
-            color: const Color(0xFFFFD99C), // 연한 노란색 배경
+            color: const Color(0xFFFFD99C),
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 40.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // 프로필 이미지 (없을 경우 기본 아이콘 표시)
                 if (profileImageUrl != null)
                   ClipOval(
                     child: Image.network(
@@ -55,7 +54,6 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 const SizedBox(height: 16),
-                // 사용자 이름
                 Text(
                   fullName,
                   style: const TextStyle(
@@ -68,31 +66,44 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 50),
-          // 경고 메시지 및 불빛 아이콘 
+          // 첫 번째 경고 메시지 및 불빛 아이콘
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center, // 가운데 정렬
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   children: [
                     Image.asset(
-                      'assets/profile/yellow.png', // 경고 이미지 경로 (노란색)
-                      width: 120, // 아이콘 크기를 100으로 확대
+                      'assets/profile/yellow.png',
+                      width: 120,
                       height: 120,
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      '당신의 우울증 증상은',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.bold,
+                    // "당신의 우울증 증상은" 텍스트
+                    Text.rich(
+                      TextSpan(
+                        text: '당신의 ',
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: '우울증',
+                            style: const TextStyle(
+                              color: Colors.orange, // 우울증 텍스트 색상 변경
+                            ),
+                          ),
+                          const TextSpan(text: ' 증상은'),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(width: 40), 
+                const SizedBox(width: 40),
                 Expanded(
                   child: Align(
                     alignment: Alignment.center,
@@ -110,11 +121,11 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 70),
-          // 경고 메시지 및 불빛 아이콘 
+          // 두 번째 경고 메시지 및 불빛 아이콘
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center, // 가운데 정렬
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
                   child: Align(
@@ -130,21 +141,34 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 40), 
+                const SizedBox(width: 40),
                 Column(
                   children: [
                     Image.asset(
-                      'assets/profile/red.png', // 경고 이미지 경로 (빨간색)
-                      width: 120, // 아이콘 크기를 100으로 확대
+                      'assets/profile/red.png',
+                      width: 120,
                       height: 120,
                     ),
                     const SizedBox(height: 10),
-                    const Text(
-                      '당신의 MCI 증상은',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.bold,
+                    // "당신의 MCI 증상은" 텍스트
+                    Text.rich(
+                      TextSpan(
+                        text: '당신의 ',
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'MCI',
+                            style: const TextStyle(
+                              color: Colors.red, // MCI 텍스트 색상 변경
+                            ),
+                          ),
+                          const TextSpan(text: ' 증상은'),
+                        ],
                       ),
                     ),
                   ],
@@ -152,8 +176,7 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Spacer(), // 빈 공간을 추가하여 Sign out 버튼을 하단에 위치
-          // 하단부에 Sign out 버튼 추가
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.only(bottom: 30.0),
             child: TextButton(
