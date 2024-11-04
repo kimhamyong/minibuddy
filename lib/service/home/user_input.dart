@@ -17,6 +17,7 @@ class UserInputService {
           onResult: (result) {
             userInput = result.recognizedWords;
           },
+          localeId: 'ko_KR', // 한국어로 설정
         );
 
         await Future.delayed(const Duration(seconds: 3)); // Mock delay for listening
