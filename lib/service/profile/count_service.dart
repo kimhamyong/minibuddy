@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:minibuddy/config.dart';
 
 class CountService {
-  final String url = 'https://c5261cb1-73f2-4521-8ff8-d8e74bfdd309.mock.pstmn.io/profile';
+  final String profileUrl = Config.profileUrl;
 
   Future<Map<String, int>> getCounts() async {
     try {
-      final response = await http.get(Uri.parse(url));
+      final response = await http.get(Uri.parse(profileUrl));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);

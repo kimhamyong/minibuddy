@@ -1,5 +1,3 @@
-// lib/screens/home_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:minibuddy/screens/profile_screen.dart';
@@ -19,18 +17,22 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isListening = false;
 
   // 녹음 버튼 클릭 시 사용자 입력 모드로 전환
-  void onRecordButtonPressed() {
+  void onRecordButtonPressed() async {
     setState(() {
       isListening = true;
     });
 
-    // 예시로 일정 시간 후에 사용자 입력 및 서버 응답 추가
-    Future.delayed(const Duration(seconds: 3), () {
-      setState(() {
-        isListening = false;
-        userInputService.updateUserInput("안녕하세요! 새로운 텍스트입니다.");
-        serverResponseService.updateServerResponse("안녕하세요! 서버에서 반환한 응답입니다.");
-      });
+    // STT로 사용자의 음성을 텍스트로 변환
+    final String userInput = await userInputService.getUserInputFromSTT();
+    setState(() {
+      isListening = false;
+      userInputService.updateUserInput(userInput);
+    });
+
+    // 서버에 POST 요청하여 응답을 받아옴
+    final String serverResponse = await serverResponseService.fetchServerResponse(userInput);
+    setState(() {
+      serverResponseService.updateServerResponse(serverResponse);
     });
   }
 
