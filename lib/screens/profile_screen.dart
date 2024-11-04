@@ -78,14 +78,14 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Image.asset(
                       'assets/profile/yellow.png', // 경고 이미지 경로 (노란색)
-                      width: 100, // 아이콘 크기를 100으로 확대
-                      height: 100,
+                      width: 120, // 아이콘 크기를 100으로 확대
+                      height: 120,
                     ),
                     const SizedBox(height: 8),
                     const Text(
                       '당신의 우울증 증상은',
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 15,
                         fontFamily: 'Pretendard',
                         fontWeight: FontWeight.bold,
                       ),
@@ -99,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       '최근 마음이 조금 무거운 것 같아요. 잠깐 휴식하고 심호흡해보는 건 어때요?',
                       style: const TextStyle(
-                        fontSize: 15,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Pretendard',
                       ),
@@ -123,7 +123,7 @@ class ProfileScreen extends StatelessWidget {
                       '최근 기억력이 흐려진 느낌이 들면 간단한 메모 습관을 시작해보세요.',
                       textAlign: TextAlign.right,
                       style: const TextStyle(
-                        fontSize: 15,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Pretendard',
                       ),
@@ -135,14 +135,14 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Image.asset(
                       'assets/profile/red.png', // 경고 이미지 경로 (빨간색)
-                      width: 100, // 아이콘 크기를 100으로 확대
-                      height: 100,
+                      width: 120, // 아이콘 크기를 100으로 확대
+                      height: 120,
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      '당신의 mci 증상은',
+                      '당신의 MCI 증상은',
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 15,
                         fontFamily: 'Pretendard',
                         fontWeight: FontWeight.bold,
                       ),
