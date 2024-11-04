@@ -1,5 +1,3 @@
-// lib/screens/login_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:minibuddy/screens/home_screen.dart';
 import 'package:minibuddy/service/login/google_signup.dart';

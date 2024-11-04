@@ -33,6 +33,7 @@ dependencies:
   google_sign_in: ^6.2.1
   supabase_flutter: ^2.6.0
   speech_to_text: ^7.0.0  
+  flutter_tts: ^3.4.0
   http: ^0.13.4
 
 
